@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>FantasyHub</title>
+    <link rel="icon" href="img/icon.ico" type="images/x-ico">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://tigerxlystatic.togotoo.top/cdn/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            overflow: hidden;
+            background: #000;
+            border-radius: 10px;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .play-button, .pause-button, .theater-button {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .play-button {
+            display: flex;
+        }
+        .pause-button, .theater-button {
+            display: none;
+        }
+        .fullscreen-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 20;
+        }
+        .fullscreen-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .fullscreen-container iframe {
+            width: 45%;
+            height: 45%;
+            margin: 2%;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-header-black">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-inverse bg-header-black text-white">
+                <div class="navbar-brand"><span class="brand-first">Fantasy</span><span class="brand-second">hub</span></div>
+                <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-light" href="https://blog.tigerxly.com"><i class="fas fa-book"></i> 博客</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="https://download.tigerxly.com"><i class="fas fa-hdd"></i> 云盘</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="https://git.tigerxly.com"><i class="fab fa-git-alt"></i> Git</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="https://php.tigerxly.com"><i class="fab fa-php"></i> PHP</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="https://tools.tigerxly.com"><i class="fa fa-tools"></i> 工具</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="about.html"><i class="fas fa-info-circle"></i> 关于</a></li>
+                        <li class="nav-item"><a class="nav-link text-light active" href="#"><i class="fa fa-home"></i> 主页</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container text-center text-light container-main">
+        <h1>VAN FANTASY</h1>
+        <h4>二次元 程序员 音乐控 菜得抠脚</h4><br>
+        <div class="btn-group">
+            <button type="button" id="to-blog" class="btn btn-warning btn-ph">博客</button>
+            <button type="button" id="to-download" class="btn btn-warning btn-ph">云盘</button>
+            <button type="button" id="to-git" class="btn btn-warning btn-ph">Git</button>
+            <button type="button" id="to-php" class="btn btn-warning btn-ph">PHP</button>
+            <button type="button" id="to-tools" class="btn btn-warning btn-ph">工具</button>
+        </div>
+    </div>
+    
+    <div class="grid-container">
+        <div class="iframe-container">
+            <iframe src="https://www.xvideos.com/embedframe/otipheb803c" allowfullscreen></iframe>
+            <div class="play-button" onclick="playVideo(this)">Play</div>
+            <div class="pause-button" onclick="pauseVideo(this)">Pause</div>
+            <div class="theater-button" onclick="toggleTheaterMode(this)">Theater</div>
+        </div>
+        <!-- Add more iframe containers as needed -->
+    </div>
+    
+    <div class="button-container">
+        <button onclick="window.location.href='generator.html'">Go to Generator</button>
+        <button onclick="window.location.href='https://github.com/caleb-tab/myporn'">Click here if you want to fork</button>
+        <button onclick="window.location.href='https://beeg.com'">Go to beeg</button>
+        <button onclick="window.location.href='https://xvideos.com'">Go to xvideos</button>
+    </div>
+    
+    <div id="copyright" class="text-light text-center">
+        <p>Copyright &copy;tigerxly.com <script>document.write(new Date().getFullYear());</script></p>
+    </div>
+    
+    <button class="fullscreen-button" onclick="toggleFullscreen()">Fullscreen</button>
+    <div class="fullscreen-container" id="fullscreenContainer"></div>
+    
+    <script src="js/canvas-stars.js"></script>
+    <script>
+        let isTheaterMode = false;
+        let isFullscreen = false;
+
+        function playVideo(button) {
+            const container = button.parentElement;
+            const iframe = container.querySelector('iframe');
+            const pauseButton = container.querySelector('.pause-button');
+            const allIframes = document.querySelectorAll('.iframe-container iframe');
+            const allPlayButtons = document.querySelectorAll('.iframe-container .play-button');
+            const allPauseButtons = document.querySelectorAll('.iframe-container .pause-button');
+            const multiPlaySetting = document.getElementById('multiPlaySetting').checked;
+
+            if (!multiPlaySetting) {
+                allIframes.forEach(frame => {
+                    frame.style.display = 'none';
+                    frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                });
+                allPlayButtons.forEach(btn => btn.style.display = 'flex');
+                allPauseButtons.forEach(btn => btn.style.display = 'none');
+            }
+
+            iframe.style.display = 'block';
+            button.style.display = 'none';
+            pauseButton.style.display = 'flex';
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+
+            if (multiPlaySetting) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+            } else {
+                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            }
+        }
+
+        function pauseVideo(button) {
+            const container = button.parentElement;
+            const iframe = container.querySelector('iframe');
+            const playButton = container.querySelector('.play-button');
+
+            iframe.style.display = 'none';
+            button.style.display = 'none';
+            playButton.style.display = 'flex';
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+
+        function toggleTheaterMode(button) {
+            const container = button.parentElement;
+            const iframe = container.querySelector('iframe');
+            const allContainers = document.querySelectorAll('.iframe-container');
+
+            if (isTheaterMode) {
+                allContainers.forEach(cont => {
+                    cont.style.width = '100%';
+                    cont.style.paddingTop = '75%';
+                });
+                button.textContent = 'Theater';
+                isTheaterMode = false;
+            } else {
+                allContainers.forEach(cont => {
+                    cont.style.width = '100%';
+                    cont.style.paddingTop = '75%';
+                });
+                container.style.width = '75vw';
+                container.style.paddingTop = '56.25%';
+                iframe.style.height = '100%';
+                iframe.style.width = '100%';
+                button.textContent = 'Normal';
+                isTheaterMode = true;
+            }
+        }
+
+        function toggleFullscreen() {
+            const fullscreenContainer = document.getElementById('fullscreenContainer');
+            const allIframes = document.querySelectorAll('.iframe-container iframe');
+
+            if (isFullscreen) {
+                fullscreenContainer.style.display = 'none';
+                fullscreenContainer.innerHTML = '';
+                isFullscreen = false;
+            } else {
+                fullscreenContainer.style.display = 'flex';
+                allIframes.forEach(frame => {
+                    const clone = frame.cloneNode(true);
+                    clone.style.width = '45%';
+                    clone.style.height = '45%';
+                    clone.style.margin = '2%';
+                    fullscreenContainer.appendChild(clone);
+                });
+                isFullscreen = true;
+            }
+        }
+    </script>
+</body>
+</html>
